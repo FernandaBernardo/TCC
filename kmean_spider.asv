@@ -1,10 +1,11 @@
-alimentos = ['A', 'F', 'B', 'M', 'P'];
+alimentos = ['Arroz', 'Batata frita', 'Brigadeiro', 'Melância', 'Pão Francês'];
 qtd_img = [ 18, 15, 17, 14, 13];
+inicial = ['A', 'F', 'B', 'M', 'P'];
 img_size = 512;
 
-for q = 1:5
-    for n = 1:qtd_img(q)
-        img = imread(strcat('Alimentos\', alimentos(q), '\', alimentos(q), num2str(n), '.jpg'));
+for q = 1:size(alimentos)
+    for n = 1:18
+        img = imread(strcat('Alimentos\', Arroz, '\', A', num2str(n), '.jpg'));
         img = imresize(img, [img_size ,img_size ]);
 
         ab = double(img(:,:,1:3));
@@ -13,7 +14,7 @@ for q = 1:5
         ab = reshape(ab,nrows*ncols,3);
 
         data = data(ab);
-        [r,a] = train(kmeans('k=4'),data);
+        [r,a] = train(kmeans('k=2'),data);
 
         cluster = reshape(r.X, img_size , img_size);
 
@@ -28,8 +29,7 @@ for q = 1:5
                     end
                end
             end
-            imwrite(n_img, strcat('new\', alimentos(q), num2str(n), '_', num2str(k), '.jpg'), 'jpg');
+            imwrite(n_img, strcat('new\A', num2str(n), '_', num2str(k), '.jpg'), 'jpg');
         end
-        clear data ab;
     end
 end
