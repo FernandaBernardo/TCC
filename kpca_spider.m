@@ -14,7 +14,7 @@ for q = 1:5
         ab = reshape(ab,nrows*ncols,3);
 
         data = data(ab);
-        [r,a] = train(kmeans('k=4'),data);
+        [r,a] = train(spectral('k=2'));
 
         cluster = reshape(r.X, img_size , img_size);
 
