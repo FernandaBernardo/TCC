@@ -1,0 +1,6 @@
+img = imread('Alimentos\A\A2.jpg');
+img = imresize(img, [512,512]);
+
+K = rangefilt(img);
+imshow(K);
+
