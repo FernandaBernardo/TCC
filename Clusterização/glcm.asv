@@ -1,6 +1,0 @@
-clear all;
-A = rgb2gray(imread('Alimentos\A\A2.jpg'));
-[glcm,SI] = graycomatrix(A,'NumLevels',8);
-SI = SI*
-colormap(gray);
-image(SI);
