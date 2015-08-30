@@ -1,28 +1,17 @@
 %food type classification
 %1-A / 2-B / 3-F / 4-M / 5-P / 6-Fundo
 
-clear;clc
-for number=1:10
-  disp(number)
-    featureExtraction(strcat('Alimentos\recorte_alimento\A',num2str(number),'.jpg'), 1);
-end
+clear;clc;
+keySet = {'Alimentos\recorte_alimento\A', 'Alimentos\recorte_alimento\B', 'Alimentos\recorte_alimento\F', 'Alimentos\recorte_alimento\M', 'Alimentos\recorte_alimento\P', 'Alimentos\recorte_fundo\F'};
+valuesClass = {1,2,3,4,5,6};
+valuesNumberOfImages = {10,10,10,10,10,60};
 
-%for number=1:10
-%    featureExtraction(strcat('Alimentos\recorte_alimento\B',num2str(number),'.jpg'), 2);
-%end
+mapClass = containers.Map(keySet, valuesClass);
+mapNumberOfImages = containers.Map(keySet, valuesNumberOfImages);
 
-%for number=1:10
-%    featureExtraction(strcat('Alimentos\recorte_alimento\F',num2str(number),'.jpg'), 3);
-%end
-
-%for number=1:10
-%    featureExtraction(strcat('Alimentos\recorte_alimento\M',num2str(number),'.jpg'), 4);
-%end
-
-%for number=1:10
-%    featureExtraction(strcat('Alimentos\recorte_alimento\P',num2str(number),'.jpg'), 5);
-%end
-
-%for number=1:60
-%    featureExtraction(strcat('Alimentos\recorte_fundo\F',num2str(number),'.jpg'), 6);
-%end
+obj = Features(mapClass, mapNumberOfImages);
+obj.extractEntropy()
+obj.extract('Contrast');
+obj.extract('Correlation');
+obj.extract('Energy');
+obj.extract('Homogeneity');
