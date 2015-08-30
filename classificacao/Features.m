@@ -17,7 +17,7 @@ classdef Features
 
 		function [] = extract(obj, typeFeature)
 			for position=1:obj.numberOfClasses
-				disp(strcat('class: ', position, ' typeFeature: ', typeFeature);
+				disp(strcat('class: ', position, ' typeFeature: ', typeFeature));
 
 				for file = 1:obj.numberOfImages(position)
 					imgcolor = imread(strcat(obj.namespaces(position,:), num2str(file), '.jpg'));
