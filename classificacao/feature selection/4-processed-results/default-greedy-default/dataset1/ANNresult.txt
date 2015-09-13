@@ -1,0 +1,15 @@
+Best: C:\Users\Fernanda\Desktop\TCC\classificacao\3-classification\default-greedy-default\ANN_20_2000\result_dataset1
+Best validation error: 1.633029e-03
+Best validation error std: 2.171755e-03
+Worst: C:\Users\Fernanda\Desktop\TCC\classificacao\3-classification\default-greedy-default\ANN_3_2000\result_dataset1
+Worst validation error: 6.353221e-02
+Worst validation error std: 2.774291e-02
+Selected features using configured algorithm:\n	contrast	120
+	energy	43
+	entropy	139
+	homogeneity	35
+	hue	59
+	normalizedRG	75
+	opponentColorSpace	116
+	transformedRGB	117
+dataset 1; mean validation error = 0.038438; validation error std = 0.028095
