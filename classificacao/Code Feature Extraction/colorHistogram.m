@@ -3,7 +3,7 @@ function [feature] = colorHistogram(X, ~)
 
 	feature = [];
 
-	[colors, map] = rgb2ind(uint8(imgColor), 64, 'nodither');
+	[colors, map] = rgb2ind(imgColor, 64, 'nodither');
 	[elements centers] = imhist(colors, map);
 
 	feature = [feature elements'];

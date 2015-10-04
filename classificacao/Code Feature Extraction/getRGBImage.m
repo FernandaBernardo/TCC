@@ -8,4 +8,5 @@ function [imgColor] = getRGBImage(X)
 		imgColor(i,:,2) = x(2,:); % G
 		imgColor(i,:,3) = x(3,:); % B
 	end
+	imgColor = uint8(imgColor);
 end
