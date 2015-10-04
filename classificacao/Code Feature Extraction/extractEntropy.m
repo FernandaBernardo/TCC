@@ -3,7 +3,7 @@ function [feature] = extractEntropy(X, ~)
 
 	feature = [];
 
-	gray = rgb2gray(imgColor);
+	gray = rgb2gray(uint8(imgColor));
     [h, w] = size(gray);
 
     tam = 4;

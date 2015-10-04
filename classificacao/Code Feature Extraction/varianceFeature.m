@@ -3,7 +3,7 @@ function [feature] = varianceFeature(X, ~)
 
 	feature = [];
 
-	gray = rgb2gray(imgColor);
+	img = rgb2gray(uint8(imgColor));
     [h, w] = size(gray);
 
     tam = 4;

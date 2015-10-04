@@ -4,16 +4,14 @@ function [feature] = comatrixProps(X, ~, typeFeature)
 	[h w p] = size(imgColor);
 
 	tam = 4;
-	cont = 0;
 
 	feature = [];
 
 	for i = tam/2+1:h-tam/2
 		for j = tam/2+1:w-tam/2
-			cont=cont+1;
 			aux = imgColor(i-tam/2:i+tam/2, j-tam/2:j+tam/2, :);
-			vizinhanca = [0 1; -1 1; -1 0; -1 -1; 0 -1; 1 -1; 1 0; 1 1];
-			[GLCM,SI]= graycomatrix(rgb2gray(aux), 'offset', vizinhanca);
+			vizinhanca = [0 0; -1 1; -1 0; -1 -1; 0 -1; 1 -1; 1 0; 1 1];
+			[GLCM,SI]= graycomatrix(rgb2gray(uint8(aux)), 'offset', vizinhanca);
 			x = graycoprops(GLCM, {typeFeature});
 			rgb = reshape(imgColor(i,j,:), 1, 3);
 			feature = [feature getfield(x, typeFeature) double(rgb)];
