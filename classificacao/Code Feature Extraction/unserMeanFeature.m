@@ -6,15 +6,28 @@ function [feature] = unserMeanFeature(X, ~)
 	d1 = 4;
  	d2 = 5;
 
- 	hist = histSum(img, d1, d2);
+ 	tam = 16;
 
- 	[h w] = size(hist);
+ 	[h w] = size(img);
 
- 	feature = 0;
+ 	feature = [];
+ 	for i = tam/2+1:h-tam/2
+		for j = tam/2+1:w-tam/2
+		 	media = 0;
 
- 	for i=1:h
- 		feature = feature + (i * hist(i, 1));
- 	end
+			aux = img(i-tam/2:i+tam/2, j-tam/2:j+tam/2);
 
-	feature = feature * 0.5;
+			hist = histSum(aux, d1, d2);
+
+			[len ~] = size(hist);
+
+			for i=1:len
+				media = media + (i * hist(i, 1));
+			end
+
+			media = media * 0.5;
+
+			feature = [feature media];
+		end
+	end
 end

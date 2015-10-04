@@ -6,13 +6,26 @@ function [feature] = unserHomogeneityFeature(X, ~)
 	d1 = 4;
  	d2 = 5;
 
- 	hist = histDiff(img, d1, d2);
+ 	tam = 16;
 
- 	[h w] = size(hist);
+ 	[h w] = size(img);
 
- 	feature = 0;
+ 	feature = [];
+ 	for i = tam/2+1:h-tam/2
+		for j = tam/2+1:w-tam/2
+			homogeneity = 0;
 
- 	for i=1:h
- 		feature = feature + ((1/(1 + i ^ 2)) * hist(i, 1));
- 	end
+			aux = img(i-tam/2:i+tam/2, j-tam/2:j+tam/2);
+
+			histogram = histDiff(aux, d1, d2);
+
+			[len ~] = size(histogram);
+
+			for i=1:len
+				homogeneity = homogeneity + ((1/(1 + i ^ 2)) * histogram(i, 1));
+		 	end
+
+		 	feature = [feature homogeneity];
+		end
+	end
 end
