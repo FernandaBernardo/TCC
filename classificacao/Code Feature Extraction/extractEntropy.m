@@ -12,7 +12,7 @@ function [feature] = extractEntropy(X, ~)
 		for j = tam/2+1:w-tam/2
 			aux = gray(i-tam/2:i+tam/2, j-tam/2:j+tam/2);
 			rgb = reshape(imgColor(i,j,:), 1, 3);
-			feature = [feature entropy(aux) rgb];
+			feature = [feature double(entropy(aux)) double(rgb)];
        	end
     end
 end

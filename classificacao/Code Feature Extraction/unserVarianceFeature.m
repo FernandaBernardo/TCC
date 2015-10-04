@@ -23,17 +23,20 @@ function [feature] = unserVarianceFeature(X, ~)
 		 	hDiff = histDiff(aux, d1, d2);
 		 	hSum = histSum(aux, d1, d2);
 
-		 	[len ~] = size(hist);
-
-		 	for i=1:len
-		 		meanFeature = meanFeature + (i * hSum(i, 1));
+		 	[len ~] = size(hSum);
+		 	for k=1:len
+		 		meanFeature = meanFeature + (k * hSum(k, 1));
 		 	end
 
 			meanFeature = meanFeature * 0.5;
 
-			for i=1:len
-		 		sumSum = sumSum + ((i - 2 * meanFeature) ^ 2 * hSum(i, 1));
-		 		sumDiff = sumDiff + (i ^ 2 * hDiff(i, 1));
+			for k=1:len
+		 		sumSum = sumSum + ((k - 2 * meanFeature) ^ 2 * hSum(k, 1));
+		 	end
+
+		 	[len ~] = size(hDiff);
+		 	for k=1:len
+		 		sumDiff = sumDiff + (k ^ 2 * hDiff(k, 1));
 		 	end
 			
 			meanFeature = meanFeature * 0.5 * (sumSum + sumDiff);

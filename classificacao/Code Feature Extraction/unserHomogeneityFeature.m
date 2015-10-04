@@ -21,8 +21,8 @@ function [feature] = unserHomogeneityFeature(X, ~)
 
 			[len ~] = size(histogram);
 
-			for i=1:len
-				homogeneity = homogeneity + ((1/(1 + i ^ 2)) * histogram(i, 1));
+			for k=1:len
+				homogeneity = homogeneity + ((1/(1 + k ^ 2)) * histogram(k, 1));
 		 	end
 
 		 	feature = [feature homogeneity];

@@ -21,8 +21,8 @@ function [feature] = unserMeanFeature(X, ~)
 
 			[len ~] = size(hist);
 
-			for i=1:len
-				media = media + (i * hist(i, 1));
+			for k=1:len
+				media = media + (k * hist(k, 1));
 			end
 
 			media = media * 0.5;

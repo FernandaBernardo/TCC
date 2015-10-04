@@ -22,11 +22,14 @@ function [feature] = unserEnergyFeature(X, ~)
 		 	hDiff = histDiff(aux, d1, d2);
 		 	hSum = histSum(aux, d1, d2);
 
-		 	[len ~] = size(hDiff);
+		 	[len ~] = size(hSum);
+		 	for k=1:len
+		 		sumSum = sumSum + (hSum(k, 1) ^ 2);
+		 	end
 
-		 	for i=1:len
-		 		sumSum = sumSum + (hSum(i, 1) ^ 2);
-		 		sumDiff = sumDiff + (hDiff(i, 1) ^ 2);
+		 	[len ~] = size(hDiff);
+		 	for k=1:len
+		 		sumDiff = sumDiff + (hDiff(k, 1) ^ 2);
 		 	end
 
 		 	energy = sumSum * sumDiff;
