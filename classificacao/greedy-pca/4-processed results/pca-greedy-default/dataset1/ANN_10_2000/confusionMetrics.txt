@@ -1,0 +1,30 @@
+Confusion metrics (Artificial Neural Network) for class 1
+FDR = 0.05
+FN = 1910.00
+FP = 912.00
+FPR = 0.48
+NPV = 0.34
+PPV = 0.95
+SPC = 0.52
+TN = 998.00
+TP = 19250.00
+TPR = 0.48
+accuracy = 0.93
+error = 0.07
+
+--------------
+Confusion metrics (Artificial Neural Network) for class 2
+FDR = 0.09
+FN = 912.00
+FP = 1910.00
+FPR = 2.09
+NPV = 11.60
+PPV = 0.91
+SPC = -1.09
+TN = -998.00
+TP = 20248.00
+TPR = 2.09
+accuracy = 0.93
+error = 0.07
+
+--------------

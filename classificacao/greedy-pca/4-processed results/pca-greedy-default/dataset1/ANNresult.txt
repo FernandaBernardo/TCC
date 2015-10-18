@@ -1,0 +1,20 @@
+Best: C:\Users\Fernanda\Desktop\TCC\classificacao\\3-classification\pca-greedy-default\ANN_5_2000\result_dataset1
+Best validation error: 2.047019e-01
+Best validation error std: 7.994315e-03
+Worst: C:\Users\Fernanda\Desktop\TCC\classificacao\\3-classification\pca-greedy-default\ANN_30_2000\result_dataset1
+Worst validation error: 2.267615e-01
+Worst validation error std: 1.300035e-02
+Selected features using configured algorithm:
+	entropy	20
+	homogeneity	19
+	unserEnergyFeature	17
+	contrast	13
+	unserHomogeneityFeature	10
+	varianceFeature	6
+	unserEntropyFeature	5
+	unserCorrelationFeature	4
+	unserMeanFeature	4
+	unserVarianceFeature	4
+	unserContrastFeature	3
+	energy	1
+dataset 1; mean validation error = 0.216430; validation error std = 0.009054
