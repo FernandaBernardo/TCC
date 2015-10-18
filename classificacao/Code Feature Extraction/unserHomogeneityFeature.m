@@ -6,7 +6,7 @@ function [feature] = unserHomogeneityFeature(X, ~)
 	d1 = 4;
  	d2 = 5;
 
- 	tam = 16;
+ 	tam = 4;
 
  	[h w] = size(img);
 
@@ -25,7 +25,7 @@ function [feature] = unserHomogeneityFeature(X, ~)
 				homogeneity = homogeneity + ((1/(1 + k ^ 2)) * histogram(k, 1));
 		 	end
 
-		 	feature = [feature homogeneity];
+		 	feature = [feature; homogeneity];
 		end
 	end
 end

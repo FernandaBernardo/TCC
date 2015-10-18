@@ -6,7 +6,7 @@ function [feature] = unserCorrelationFeature(X, ~)
 	d1 = 4;
  	d2 = 5;
 
- 	tam = 16;
+ 	tam = 4;
 
  	[h w] = size(img);
 
@@ -42,7 +42,7 @@ function [feature] = unserCorrelationFeature(X, ~)
 			
 			correlation = 0.5 * (sumSum - sumDiff);
 
-			feature = [feature correlation];
+			feature = [feature; correlation];
 		end
 	end
 end

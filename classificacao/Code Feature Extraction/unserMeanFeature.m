@@ -6,7 +6,7 @@ function [feature] = unserMeanFeature(X, ~)
 	d1 = 4;
  	d2 = 5;
 
- 	tam = 16;
+ 	tam = 4;
 
  	[h w] = size(img);
 
@@ -27,7 +27,7 @@ function [feature] = unserMeanFeature(X, ~)
 
 			media = media * 0.5;
 
-			feature = [feature media];
+			feature = [feature; media];
 		end
 	end
 end

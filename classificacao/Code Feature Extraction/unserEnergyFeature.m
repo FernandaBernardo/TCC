@@ -6,7 +6,7 @@ function [feature] = unserEnergyFeature(X, ~)
 	d1 = 4;
  	d2 = 5;
 
- 	tam = 16;
+ 	tam = 4;
 
  	[h w] = size(img);
 
@@ -34,7 +34,7 @@ function [feature] = unserEnergyFeature(X, ~)
 
 		 	energy = sumSum * sumDiff;
 
-		 	feature = [feature energy];
+		 	feature = [feature; energy];
 		end
 	end
 end

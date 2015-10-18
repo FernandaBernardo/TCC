@@ -15,7 +15,7 @@ function [feature] = comatrixProps(X, ~, typeFeature)
 			[GLCM ~]= graycomatrix(aux, 'offset', vizinhanca);
 			x = graycoprops(GLCM, {typeFeature});
 			rgb = reshape(imgColor(i,j,:), 1, 3);
-			feature = [feature double(getfield(x, typeFeature)) double(rgb)];
+			feature = [feature; double(getfield(x, typeFeature)) double(rgb)];
 		end
 	end	
 end

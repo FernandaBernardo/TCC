@@ -6,7 +6,7 @@ function [feature] = unserEntropyFeature(X, ~)
 	d1 = 4;
  	d2 = 5;
 
- 	tam = 16;
+ 	tam = 4;
 
  	[h w] = size(img);
 
@@ -33,7 +33,7 @@ function [feature] = unserEntropyFeature(X, ~)
 
 		 	entropia = - sumSum - sumDiff;
 
-		 	feature = [feature entropia];
+		 	feature = [feature; entropia];
 		end
 	end
 end

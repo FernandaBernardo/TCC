@@ -6,7 +6,7 @@ function [feature] = unserContrastFeature(X, ~)
 	d1 = 4;
  	d2 = 5;
 
- 	tam = 16;
+ 	tam = 4;
 
  	[h w] = size(img);
 
@@ -24,7 +24,7 @@ function [feature] = unserContrastFeature(X, ~)
 		 		contrast = contrast + (k ^ 2 * histogram(k, 1));
 		 	end
 
-		 	feature = [feature contrast];
+		 	feature = [feature; contrast];
 		end
 	end
 end

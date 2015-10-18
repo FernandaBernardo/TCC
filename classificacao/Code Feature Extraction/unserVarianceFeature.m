@@ -6,7 +6,7 @@ function [feature] = unserVarianceFeature(X, ~)
 	d1 = 4;
  	d2 = 5;
 
- 	tam = 16;
+ 	tam = 4;
 
  	[h w] = size(img);
 
@@ -41,7 +41,7 @@ function [feature] = unserVarianceFeature(X, ~)
 			
 			meanFeature = meanFeature * 0.5 * (sumSum + sumDiff);
 
-			feature = [feature meanFeature];
+			feature = [feature; meanFeature];
 		end
 	end
 end
