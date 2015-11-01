@@ -3,28 +3,43 @@ function [feature] = normalizedRG(X, ~)
 
 	feature = [];
 
-	% pre process image with formulas from article
-	obj = PreProcessing(imgColor);
+	[h w ~] = size(imgColor);
 
-	%%%%%%%%%%%%% NORMALIZED R %%%%%%%%%%%%%
-	processedImage = obj.normalizedR;
+	tam = 16;
 
-	features = extractBagOfFeatures(processedImage);
+	for i = tam/2+1:h-tam/2
+		for j = tam/2+1:w-tam/2
+			normalized = [];
+			aux = imgColor(i-tam/2:i+tam/2, j-tam/2:j+tam/2, :);
 
-	% organize array of features to cluster
-	[h w] = size(features);
-	f = reshape(features', [h*w 1]);
-	[idx, centers] = kmeans(f, 5);
-	feature = [feature centers'];
+			% pre process image with formulas from article
+			obj = PreProcessing(aux);
 
-	%%%%%%%%%%%%% NORMALIZED G %%%%%%%%%%%%%
-	processedImage = obj.normalizedG;
+			%%%%%%%%%%%%% NORMALIZED R %%%%%%%%%%%%%
+			processedImage = obj.normalizedR;
 
-	features = extractBagOfFeatures(processedImage);
+			features = [];
+			features = extractBagOfFeatures(processedImage, tam);
 
-	% organize array of features to cluster
-	[h w] = size(features);
-	f = reshape(features', [h*w 1]);
-	[idx, centers] = kmeans(f, 5);
-	feature = [feature centers'];
+			% organize array of features to cluster
+			[hFeat wFeat] = size(features);
+			f = reshape(features', [hFeat*wFeat 1]);
+			[idx, centers] = kmeans(f, 5,'Maxiter',300);
+			normalized = [normalized centers'];
+
+			%%%%%%%%%%%%% NORMALIZED G %%%%%%%%%%%%%
+			processedImage = obj.normalizedG;
+
+			features = [];
+			features = extractBagOfFeatures(processedImage, tam);
+
+			% organize array of features to cluster
+			[hFeat wFeat] = size(features);
+			f = reshape(features', [hFeat*wFeat 1]);
+			[idx, centers] = kmeans(f, 5, 'Maxiter',300);
+			normalized = [normalized centers'];
+			
+			feature = [feature; normalized];
+		end
+	end
 end

@@ -3,41 +3,55 @@ function [feature] = opponentColorSpace(X, ~)
 
 	feature = [];
 
-	% pre process image with formulas from article
-	obj = PreProcessing(imgColor);
+	[h w ~] = size(imgColor);
 
-	%%%%%%%%%%%%% OPPONENT COLOR SPACE 1 %%%%%%%%%%%%%
-	processedImage = obj.opponentColorSpace1;
+	tam = 16;
 
-	features = extractBagOfFeatures(processedImage);
+	for i = tam/2+1:h-tam/2
+		for j = tam/2+1:w-tam/2
+			opponent = [];
+			aux = imgColor(i-tam/2:i+tam/2, j-tam/2:j+tam/2, :);
 
-	% organize array of features to cluster
-	[h w] = size(features);
-	f = reshape(features', [h*w 1]);
-	[idx, centers] = kmeans(f, 5);
-	feature = [feature centers'];
+			% pre process image with formulas from article
+			obj = PreProcessing(aux);
 
+			%%%%%%%%%%%%% OPPONENT COLOR SPACE 1 %%%%%%%%%%%%%
+			processedImage = obj.opponentColorSpace1;
 
-	%%%%%%%%%%%%% OPPONENT COLOR SPACE 2 %%%%%%%%%%%%%
-	processedImage = obj.opponentColorSpace2;
+			features = [];
+			features = extractBagOfFeatures(processedImage, tam);
 
-	features = extractBagOfFeatures(processedImage);
+			% organize array of features to cluster
+			[hFeat wFeat] = size(features);
+			f = reshape(features', [hFeat*wFeat 1]);
+			[idx, centers] = kmeans(f, 5);
+			opponent = [opponent centers'];
 
-	% organize array of features to cluster
-	[h w] = size(features);
-	f = reshape(features', [h*w 1]);
-	[idx, centers] = kmeans(f, 5);
-	feature = [feature centers'];
+			%%%%%%%%%%%%% OPPONENT COLOR SPACE 2 %%%%%%%%%%%%%
+			processedImage = obj.opponentColorSpace2;
 
+			features = [];
+			features = extractBagOfFeatures(processedImage, tam);
 
-	%%%%%%%%%%%%% OPPONENT COLOR SPACE 3 %%%%%%%%%%%%%
-	processedImage = obj.opponentColorSpace3;
+			% organize array of features to cluster
+			[hFeat wFeat] = size(features);
+			f = reshape(features', [hFeat*wFeat 1]);
+			[idx, centers] = kmeans(f, 5);
+			opponent = [opponent centers'];
 
-	features = extractBagOfFeatures(processedImage);
+			%%%%%%%%%%%%% OPPONENT COLOR SPACE 3 %%%%%%%%%%%%%
+			processedImage = obj.opponentColorSpace3;
 
-	% organize array of features to cluster
-	[h w] = size(features);
-	f = reshape(features', [h*w 1]);
-	[idx, centers] = kmeans(f, 5);
-	feature = [feature centers'];
+			features = [];
+			features = extractBagOfFeatures(processedImage, tam);
+
+			% organize array of features to cluster
+			[hFeat wFeat] = size(features);
+			f = reshape(features', [hFeat*wFeat 1]);
+			[idx, centers] = kmeans(f, 5);
+			opponent = [opponent centers'];
+
+			feature = [feature; opponent];
+		end
+	end
 end

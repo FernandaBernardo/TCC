@@ -1,10 +1,14 @@
 classdef Verification
-	properties(Constant)
-		recLeft = 8;
-		recRight = 7;
+	properties
+		recLeft, recRight;
 	end
 
 	methods
+		function obj = Verification(rect) 
+			obj.recLeft = rect / 2;
+			obj.recRight = (rect / 2) - 1;
+		end
+
 		function [xi,xf,yi,yf] = verifyBorder(obj, x, y, imgSize)
 			xi = x - obj.recLeft;
 			xf = x + obj.recRight;
@@ -27,13 +31,15 @@ classdef Verification
 			end
 		end
 
-		function [location] = verifyKeyPoints(obj, location, numberOfClusters)
+		function [location] = verifyKeyPoints(obj, location, numberOfClusters, tam)
 			[h w] = size(location);
 			if(h < numberOfClusters)
-				for i = h:numberOfClusters
-					location(h+1,1) = randi(50);
-					location(h+1,2) = randi(50);
+				for i = h:(numberOfClusters-1)
+					location(h+1,1) = randi(tam);
+					location(h+1,2) = randi(tam);
 				end
+			elseif (h > numberOfClusters)
+				location = location(1:numberOfClusters, :);
 			end
 		end
 	end
