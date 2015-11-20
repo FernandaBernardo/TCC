@@ -6,7 +6,7 @@ function [feature] = unserCorrelationFeature(X, ~)
 	d1 = 4;
  	d2 = 5;
 
- 	tam = 4;
+ 	tam = 16;
 
  	[h w] = size(img);
 

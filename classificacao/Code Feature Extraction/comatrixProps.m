@@ -4,7 +4,7 @@ function [feature] = comatrixProps(X, ~, typeFeature)
 
 	[h w] = size(img);
 
-	tam = 4;
+	tam = 16;
 
 	feature = [];
 	vizinhanca = [0 0; -1 1; -1 0; -1 -1; 0 -1; 1 -1; 1 0; 1 1];
